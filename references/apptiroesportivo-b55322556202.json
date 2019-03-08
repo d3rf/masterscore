@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "apptiroesportivo",
+  "private_key_id": "b553225562023fbb812e352f7c0da81cc520ca1c",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQDQZXxfMhOWk5rI\nqzsghz7zmk/hU9eZymtHBCR4zvThECm5s4Hg6QJ4obh+hE2PMHToQC+hqZgJOJtE\nym15V9K1uoPA7VAcR1NKE7ZmXQN5GGMhfLWUix7vRTj6LIWNKyPAg8kxrGQ63oip\nB5PUw59y+2zbmC2efSzy8EodADhA8z2Nlm49n8Tj6lvqTh/uzXcciRAu/EQkinqE\nTx0CmWVP0/DIBneT71CBx/1QHXOmXu34REuYgL4rCnOC7v4xVVwoqK6qo5FRWYYL\naP7O+p81n8pA1QyJ6rfeJ3H04/bXsp26y3KOhtMUcATQBUZF/OEm24H1gWapTfEl\nXcNvcJEdAgMBAAECggEAWikuL/l4ZBMkSmFayW36HGbM3I3rn4vl8emm5eWUKLNX\nehJhxK7K9Ony6jnPXH34dmsesHCxaHvnIVH7Hx6R+THiwttpZ3KsZEY3Cf5//CpC\n6UANR2ERVy+5wPL2LOdXJnld2HHfQ2D3+zleChVArPx+Ult6kTFS+yBe0EFCFUbf\nEfFYeGPfMgI7tB/Z0Sa6tl4d9Yy4QhCH6WVJVm86I4DNdiokqpAbsOvlvf4oru4P\nqfj6ojuQjO7RB4Pb8GIT4DMPjKdjLgQkYfEKdZRCMaFTy5sXnKD51cqyUaMVideY\nTXoI8Nm4YEld1xpfzxs48ff0m6maj+kx7NZKXAD/OQKBgQD5GdYMh2ogKl4AwM/7\ne531znXhOLhjIE5Gm9W8upk8BALqGIL99x6bk7X2Kmc/yBiOAKUIGkLVPwpdbrOP\n5jXZpN7G/iiS8dmHl/L4UuW19XsRGGKeL0iUUCLB/m1O4dZe7B8+Baj+rUkUW8EG\n1RMX5/EYCzIrJztZ/SeubujN1wKBgQDWKwxvkG4qut8iRypEJlQJVvOiWhSWnOdM\nCJHD2jTZAZwucHXsqwT7DkCgzIJMq1ikxAa6J9E3FoNhzxBw6Nq+rfr8v9RcfmJg\nTawMrDv9S5ie92CB0owfaaVX24uXku57ZfkEh6/Tjd6ZoT7lA6Nztw/E8jd8I9VJ\neUmAQq4yKwKBgQC34n2jlBcglYX9MliWQcPyn61fTBq5ejCuaP1YK7tQlXl9TAju\n54zdtiW+CcFcUR7nPMyW9aPefYHuRPkiwgOAnfeimB5lk0lMkjvXWoKeVw+5J/Is\n6aS/b4SpBmO0tnwkaFQL2evNzSfEcpNEsug8XokYgbNQLc7feEThvJf40wKBgAMG\nrLBO3B+icFCtrL01xW40WlDq8OuH4ATFAjpANQrz6N8HG8NyTym089jRyu2GZkQ9\nuNKciWo72TNil5rgz2ZuUuOLWlbMOlud/VZYgKh9jvSADk8HSI+REJMDOR+1JcV8\nlV4pBKT6ljCZhKf7uy2BYqmnunz4jKTzH8S+LHPtAoGAOjxgDSpllyrlsHEWyjok\ncTHeeT/zayn6fhtWoW+mYpBLP4jUyIrS/nMNITsWay1+lYHhbC0GVMuJv/V7PABT\nXsmYiA6FU/I/6U/S8m+iCuP8i1bIVNZEjoxJMw7P2EAxMbBXUYUBLWUEU9e7EPS0\nagcrqXcDrqmoBby82f46VPo=\n-----END PRIVATE KEY-----\n",
+  "client_email": "apptiroesportivo@appspot.gserviceaccount.com",
+  "client_id": "112322890681567158785",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/apptiroesportivo%40appspot.gserviceaccount.com"
+}
