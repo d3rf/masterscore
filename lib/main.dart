@@ -5,6 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'splashscreen.dart';
 import 'loginscreen.dart';
 import 'formStages.dart';
+import 'formSubscription.dart';
 import 'home.dart';
 
 void main() => runApp(MyApp());
@@ -27,7 +28,8 @@ class MyApp extends StatelessWidget {
         // or simply save your changes to "hot reload" in a Flutter IDE).
         // Notice that the counter didn't reset back to zero; the application
         // is not restarted.
-        primarySwatch: Colors.lightBlue ,
+
+        primaryColor: Colors.lightBlue,
       ),
       home: MyHomePage(title: 'Flutter Demo Home Page'),
       routes: <String,WidgetBuilder>{
@@ -72,6 +74,7 @@ class _MyHomePageState extends State<MyHomePage> {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return Center(child: CircularProgressIndicator());
           } else {
+            print(snapshot.hasData.toString());
             if (snapshot.hasData) {
               return new Home(snapshot.data);
             }else {

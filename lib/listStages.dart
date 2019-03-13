@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:intl/intl.dart';
 import 'package:community_material_icon/community_material_icon.dart';
+import 'formSubscription.dart';
 import 'globalInfo.dart' as globals;
 class ListStages extends StatefulWidget{
   @override
@@ -10,9 +11,9 @@ class ListStages extends StatefulWidget{
 class ListStagesState extends State<ListStages>{
   final _firestore = Firestore.instance;
 
-  _stageDetais(String docUid){
+  _stageDetails(String docUid){
     if (globals.isAdmin){
-      Navigator.of(context).pushNamed("/stage", arguments: docUid);
+      //Navigator.of(context).pushNamed("/stage", arguments: docUid);
     }
   }
 
@@ -33,12 +34,12 @@ class ListStagesState extends State<ListStages>{
             if (snapshot.hasData){
               dataToReturn = snapshot.data.documents.map( (DocumentSnapshot document){
                 if (document.exists) {
-                  ;
+                  String stageUid = document.documentID;
                   //var dataEvento = DateTime(document['data']);
                   var dataFormatada = DateFormat('dd/M/yyyy HH:mm').format(document['data']);
                   String inscritos = document['qtdInscritos'] ?? "0";
                   return GestureDetector(
-                    onTap: _stageDetais(document.documentID),
+                    onTap: _stageDetails(document.documentID),
                     child:Card(
                     color: Colors.white,
                     elevation: 1.0,
@@ -61,6 +62,7 @@ class ListStagesState extends State<ListStages>{
                                 Column(
                                   children: <Widget>[
                                     Icon(CommunityMaterialIcons.clock_outline),
+                                    Padding(padding: EdgeInsets.all(5.0),),
                                     Text(dataFormatada)
                                   ],
                                 )
@@ -68,13 +70,32 @@ class ListStagesState extends State<ListStages>{
                                 Column(
                                   children: <Widget>[
                                     Icon(CommunityMaterialIcons.account_group),
+                                    Padding(padding: EdgeInsets.all(5.0),),
                                     Text(inscritos)
                                   ],
                                 ),
                                 Column(
                                   children: <Widget>[
                                     Icon(CommunityMaterialIcons.target),
+                                    Padding(padding: EdgeInsets.all(5.0),),
                                     Text("8")
+                                  ],
+                                ),
+                                Column(
+                                  children: <Widget>[
+                                    IconButton(
+                                      icon: Icon(CommunityMaterialIcons.clock_in,color: Colors.lightGreen ,) ,
+                                      iconSize: 58,
+                                      splashColor: Theme.of(context).primaryColor,
+                                      onPressed: (){
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) => FormSubscription(stageUid)
+                                          ),
+                                        );
+                                      },
+                                    ),
                                   ],
                                 ),
                               ],

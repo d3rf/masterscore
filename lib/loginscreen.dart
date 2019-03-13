@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class LoginScreen extends StatefulWidget  {
 
@@ -7,6 +8,9 @@ class LoginScreen extends StatefulWidget  {
 
 }
 class LoginScreenState extends State<LoginScreen>{
+  String _login;
+  String _password;
+  GlobalKey<FormState> formLoginKey = new GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     final logo = Hero(
@@ -26,6 +30,7 @@ class LoginScreenState extends State<LoginScreen>{
         contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(32.0)),
       ),
+      onSaved: (value)=> _login = value,
     );
 
     final password = TextFormField(
@@ -36,6 +41,7 @@ class LoginScreenState extends State<LoginScreen>{
         contentPadding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 10.0),
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(32.0)),
       ),
+      onSaved: (value)=> _password = value,
     );
 
     final loginButton = Padding(
@@ -45,7 +51,12 @@ class LoginScreenState extends State<LoginScreen>{
           borderRadius: BorderRadius.circular(24),
         ),
         onPressed: () {
+          formLoginKey.currentState.save();
+          FirebaseAuth.instance.signInWithEmailAndPassword(email: _login, password: _password).then((user){
+            print(user.uid);
+          }).catchError((error)=> print(error.toString()));
           //Navigator.of(context).pushNamed(HomePage.tag);
+
         },
         padding: EdgeInsets.all(12),
         color: Colors.lightBlueAccent,
@@ -61,23 +72,27 @@ class LoginScreenState extends State<LoginScreen>{
       onPressed: () {},
     );
 
+
     return Scaffold(
       backgroundColor: Colors.white,
       body: Center(
-        child: ListView(
-          shrinkWrap: true,
-          padding: EdgeInsets.only(left: 24.0, right: 24.0),
-          children: <Widget>[
-            logo,
-            SizedBox(height: 48.0),
-            email,
-            SizedBox(height: 8.0),
-            password,
-            SizedBox(height: 24.0),
-            loginButton,
-            forgotLabel
-          ],
-        ),
+        child: Form(
+          key: formLoginKey,
+          child: ListView(
+            shrinkWrap: true,
+            padding: EdgeInsets.only(left: 24.0, right: 24.0),
+            children: <Widget>[
+              logo,
+              SizedBox(height: 48.0),
+              email,
+              SizedBox(height: 8.0),
+              password,
+              SizedBox(height: 24.0),
+              loginButton,
+              forgotLabel
+            ],
+          ),
+        )
       ),
     );
   }

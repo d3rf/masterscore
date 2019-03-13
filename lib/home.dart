@@ -35,6 +35,7 @@ class HomeState extends State<Home> with SingleTickerProviderStateMixin {
           userData = userDoc.data;
           globals.isAdmin = true;
           globals.currentUser = userDoc.data;
+          globals.userUid = user.uid;
           floatButton = FloatingActionButton(
             backgroundColor: Colors.lightBlue,
             child: Icon(Icons.add),
