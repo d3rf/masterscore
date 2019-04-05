@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Master Score',
       theme: ThemeData(
         backgroundColor: Colors.black12,
         // This is the theme of your application.
@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
 
         primaryColor: Colors.lightBlue,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MyHomePage(title: ''),
       routes: <String,WidgetBuilder>{
         "/formStages":(BuildContext context)=>FormStages(),
       }

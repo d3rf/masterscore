@@ -35,7 +35,8 @@ class FormSubscriptionState extends State<FormSubscription>{
     _formkeyCreateSubscription.currentState.save();
     print(globals.currentUser);
     firestore.collection("cofs/"+stageUid+"/subscriptions").add({
-      'nome':'Eu',
+      'nome':globals.currentUser['name'],
+      'shooterUid':globals.userUid,
       'shooterRefs': firestore.document('shooters/'+globals.userUid),
       'divisao':_divisaoSelected,
       'categoria':_categoriaSelected,
@@ -48,7 +49,7 @@ class FormSubscriptionState extends State<FormSubscription>{
     }).catchError((error)=>print(error.toString()));
 
   }
-
+  List<Widget> minhasInscricoes = new List<Widget>();
   Widget cabecalho = Card(
     child: Text("Carregando informações..."),
   );
@@ -56,14 +57,13 @@ class FormSubscriptionState extends State<FormSubscription>{
   @override
   void initState(){
     super.initState();
+    minhasInscricoes.add(Text('Buscando suas informações neste torneiro...'));
     _divisaoSelected = divisao[0];
     _fatorSelected = fator[0];
     _calibreSelected = calibre[0];
     _categoriaSelected = categoria[0];
     firestore.document("cofs/"+stageUid).get().then((stageData){
-
       setState((){
-
         cabecalho = Card(
             color: Colors.white,
             elevation: 1.0,
@@ -80,6 +80,8 @@ class FormSubscriptionState extends State<FormSubscription>{
                           subtitle: new Text(stageData['briefing']),
                           isThreeLine: true,
                         ),
+                        Column(children: minhasInscricoes,)
+
                       ],
                     )
                 )
@@ -89,7 +91,19 @@ class FormSubscriptionState extends State<FormSubscription>{
       });
     });
   }
-
+  /*
+  _getMySubscriptionInCOF(){
+    Widget build(BuildContext context) {
+      return StreamBuilder<QuerySnapshot>(
+        stream: firestore.collection("cofs/"+stageUid).where("shooterId",isEqualTo: ).snapshots(),
+        builder: (BuildContext context,
+            AsyncSnapshot<QuerySnapshot> snapshot) {
+          return new ListView(children: createChildren(snapshot));
+        },
+      );
+    }
+  }
+  */
   Widget build(BuildContext context) {
       return Scaffold(
           key: _scaffoldKey,
@@ -131,7 +145,7 @@ class FormSubscriptionState extends State<FormSubscription>{
                     Padding(padding: EdgeInsets.all(5.0),),
                     RaisedButton(
                       onPressed: ()=>  _saveSubscription(),
-                      child: Text('Salvar Merda'),
+                      child: Text('Inscrever-se'),
                     )
                   ],
                 ),

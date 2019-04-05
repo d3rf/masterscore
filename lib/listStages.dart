@@ -3,6 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:intl/intl.dart';
 import 'package:community_material_icon/community_material_icon.dart';
 import 'formSubscription.dart';
+import 'stageInfo.dart';
 import 'globalInfo.dart' as globals;
 class ListStages extends StatefulWidget{
   @override
@@ -11,9 +12,15 @@ class ListStages extends StatefulWidget{
 class ListStagesState extends State<ListStages>{
   final _firestore = Firestore.instance;
 
-  _stageDetails(String docUid){
+  _stageDetails(String docUid, BuildContext context){
     if (globals.isAdmin){
-      //Navigator.of(context).pushNamed("/stage", arguments: docUid);
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) => StageInfo(docUid)
+        ),
+      );
+      print('stageid '+docUid);
     }
   }
 
@@ -39,7 +46,7 @@ class ListStagesState extends State<ListStages>{
                   var dataFormatada = DateFormat('dd/M/yyyy HH:mm').format(document['data']);
                   String inscritos = document['qtdInscritos'] ?? "0";
                   return GestureDetector(
-                    onTap: _stageDetails(document.documentID),
+                    onTap: ()=> _stageDetails(stageUid, context),
                     child:Card(
                     color: Colors.white,
                     elevation: 1.0,
@@ -61,7 +68,7 @@ class ListStagesState extends State<ListStages>{
                               children: <Widget>[
                                 Column(
                                   children: <Widget>[
-                                    Icon(CommunityMaterialIcons.clock_outline),
+                                    Icon(CommunityMaterialIcons.calendar_star),
                                     Padding(padding: EdgeInsets.all(5.0),),
                                     Text(dataFormatada)
                                   ],
@@ -84,8 +91,8 @@ class ListStagesState extends State<ListStages>{
                                 Column(
                                   children: <Widget>[
                                     IconButton(
-                                      icon: Icon(CommunityMaterialIcons.clock_in,color: Colors.lightGreen ,) ,
-                                      iconSize: 58,
+                                      icon: Icon(CommunityMaterialIcons.account_check,color: Colors.lightGreen ,) ,
+                                      iconSize: 40,
                                       splashColor: Theme.of(context).primaryColor,
                                       onPressed: (){
                                         Navigator.push(
@@ -96,6 +103,7 @@ class ListStagesState extends State<ListStages>{
                                         );
                                       },
                                     ),
+                                    Text('Inscreva-se')
                                   ],
                                 ),
                               ],
@@ -122,7 +130,7 @@ class ListStagesState extends State<ListStages>{
             return new ListView(children: dataToReturn,);
         }
       },
-    );;
+    );
   }
 
 }

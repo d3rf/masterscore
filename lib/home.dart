@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'listStages.dart';
-import 'globalInfo.dart' as globals;
+  import 'package:firebase_auth/firebase_auth.dart';
+  import 'package:cloud_firestore/cloud_firestore.dart';
+  import 'package:firebase_core/firebase_core.dart';
+  import 'listStages.dart';
+  import 'globalInfo.dart' as globals;
 
-class Home extends StatefulWidget{
+  class Home extends StatefulWidget{
   var userLogged;
   Home(this.userLogged);
 
   @override
   HomeState createState()=>new HomeState(userLogged);
-}
+  }
 
 
-class HomeState extends State<Home> with SingleTickerProviderStateMixin {
+  class HomeState extends State<Home> with SingleTickerProviderStateMixin {
   FirebaseUser user;
   var userData;
   final firestore = Firestore.instance;
@@ -63,7 +63,7 @@ class HomeState extends State<Home> with SingleTickerProviderStateMixin {
                 Tab(icon: Icon(Icons.public)),
               ],
             ),
-            title: Text('Tabs Demo'),
+            title: Text('Master Score'),
           ),
           body: TabBarView(
             controller: _tabController,
